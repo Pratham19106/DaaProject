@@ -1,0 +1,41 @@
+{
+  "name": "windsurf-backend",
+  "version": "1.0.0",
+  "description": "AI Travel Assistant Backend - Gemini + Express",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:serpapi:hotels": "node test-serpapi-hotels.js",
+    "test:serpapi:attractions": "node test-serpapi-attractions.js",
+    "test:serpapi": "node test-serpapi-hotels.js && node test-serpapi-attractions.js",
+    "test:all-tools": "node test-all-tools.js",
+    "test:ollama": "node test-ollama-integration.js",
+    "test:quick": "node quick-test.js"
+  },
+  "keywords": ["travel", "ai", "gemini", "chatbot"],
+  "author": "Windsurf Team",
+  "license": "MIT",
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "express": "^4.19.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "axios": "^1.7.2",
+    "helmet": "^7.1.0",
+    "express-rate-limit": "^7.2.0",
+    "joi": "^17.13.1",
+    "node-cache": "^5.1.2",
+    "winston": "^3.13.0",
+    "serpapi": "^2.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0",
+    "jest": "^29.7.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
