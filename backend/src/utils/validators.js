@@ -5,8 +5,8 @@ export const chatMessageSchema = Joi.object({
   conversationId: Joi.string().uuid().optional(),
   context: Joi.object({
     destination: Joi.string().max(100).optional(),
-    startDate: Joi.date().iso().optional(),
-    endDate: Joi.date().iso().min(Joi.ref('startDate')).optional(),
+    startDate: Joi.string().isoDate().optional(),
+    endDate: Joi.string().isoDate().optional(),
     budgetInr: Joi.number().min(1000).max(10000000).optional(),
     adults: Joi.number().integer().min(1).max(20).optional(),
     children: Joi.number().integer().min(0).max(20).optional(),
@@ -14,6 +14,7 @@ export const chatMessageSchema = Joi.object({
       'history', 'nature', 'beaches', 'food', 'nightlife',
       'spirituality', 'adventure', 'shopping'
     )).optional(),
+    otherInterests: Joi.string().max(500).optional(),
     hotelClass: Joi.string().valid('budget', 'mid-range', 'luxury').optional(),
     diet: Joi.string().valid('any', 'vegetarian', 'vegan', 'halal', 'non-veg').optional(),
   }).optional(),

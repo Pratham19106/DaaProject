@@ -271,7 +271,7 @@ export default function ContextPanel({ context, setContext, onPlanTrip }) {
       {/* Interests */}
       <div>
         <label className="text-sm font-medium mb-2 block">Interests</label>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 mb-3">
           {interests.map(interest => (
             <button
               key={interest}
@@ -285,6 +285,32 @@ export default function ContextPanel({ context, setContext, onPlanTrip }) {
               {interest}
             </button>
           ))}
+        </div>
+        
+        {/* Others Interest - Typable */}
+        <div className="space-y-2">
+          <label className="text-xs font-medium text-gray-600 dark:text-gray-400 block">
+            Other Interests (comma-separated)
+          </label>
+          <input
+            type="text"
+            placeholder="e.g., photography, wildlife, yoga"
+            value={context.otherInterests || ''}
+            onChange={(e) => updateContext('otherInterests', e.target.value)}
+            className="w-full px-3 py-2 border rounded-md bg-background text-sm"
+          />
+          {context.otherInterests && (
+            <div className="flex flex-wrap gap-2 mt-2">
+              {context.otherInterests.split(',').map((interest, idx) => (
+                <span
+                  key={idx}
+                  className="px-3 py-1 rounded-full text-sm bg-primary/20 text-primary dark:bg-primary/30 dark:text-primary-foreground"
+                >
+                  {interest.trim()}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 

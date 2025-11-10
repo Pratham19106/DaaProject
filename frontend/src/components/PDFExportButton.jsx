@@ -6,9 +6,9 @@ export default function PDFExportButton({ message }) {
   const [error, setError] = useState(null);
 
   // Check if message contains PDF JSON
-  const isPDFExport = message.content && 
-    message.content.includes('"export_type": "pdf"') &&
-    message.content.includes('"metadata"');
+  const isPDFExport = (message.text || message.content) && 
+    (message.text || message.content).includes('"export_type": "pdf"') &&
+    (message.text || message.content).includes('"metadata"');
 
   const handleExportPDF = async () => {
     try {
@@ -19,7 +19,7 @@ export default function PDFExportButton({ message }) {
       let pdfData;
       try {
         // Extract JSON from message (it might be wrapped in markdown code blocks)
-        let jsonStr = message.content;
+        let jsonStr = message.text || message.content;
         
         // Remove markdown code blocks if present
         jsonStr = jsonStr.replace(/```json\n?/g, '').replace(/```\n?/g, '');

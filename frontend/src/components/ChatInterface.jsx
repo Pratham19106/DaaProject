@@ -120,7 +120,7 @@ export default function ChatInterface({ conversationId, context, setContext }) {
   };
 
   return (
-    <div className="bg-card border rounded-lg flex flex-col h-[calc(100vh-10rem)]">
+    <div className="bg-card border w-0 rounded-lg flex flex-col h-[calc(100vh-10rem)]">
       {/* Header */}
       <div className="border-b px-6 py-5 flex items-center justify-between bg-muted/30">
         <div>
